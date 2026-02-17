@@ -16,3 +16,12 @@ Python, TensorFlow, CNN, Computer Vision
 
 <img src="Utils/forreadme.png" height=400px width=500px>
 
+## Key Learnings
+
+<ul>
+<li>Implemented feature extraction using pretrained CNN</li>
+<li>Applied gradient-based optimization</li>
+<li>Understood feature map representations</li>
+<li>Tuned hyperparameters for loss balancing</li>
+</ul>
+
