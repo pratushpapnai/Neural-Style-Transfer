@@ -35,11 +35,11 @@ def compute_content_cost(a_C,a_G):
 
 
 STYLE_LAYERS={
-    "block1_conv2":0.2,
-    "block2_conv2":0.3,
-    "block3_conv2":0.4,
-    "block4_conv2":0.5,
-    "block5_conv2":0.6
+    "block1_conv2":0.5,
+    "block2_conv2":1.0,
+    "block3_conv2":1.5,
+    "block4_conv2":3.0,
+    "block5_conv2":4.0
 }
 
 
@@ -68,7 +68,7 @@ def total_cost(J_content,J_style,alpha=10,beta=40):
     return J_total
 
 
-content_image=cv2.imread(CONTENT_PATH+"dogesh.jpg")
+content_image=cv2.imread(CONTENT_PATH+"louvre.jpg")
 content_image=cv2.cvtColor(content_image,cv2.COLOR_BGR2RGB)
 content_image=cv2.resize(content_image,(400,400))
 content_image=content_image.astype("float32")/255.
@@ -79,7 +79,7 @@ plt.imshow(content_image)
 plt.axis("off")
 
 
-style_image=cv2.imread(STYLE_PATH+"art.jpg")
+style_image=cv2.imread(STYLE_PATH+"monet.jpg")
 style_image=cv2.cvtColor(style_image,cv2.COLOR_BGR2RGB)
 style_image=cv2.resize(style_image,(400,400))
 style_image=style_image.astype("float32")/255.
@@ -123,7 +123,7 @@ def train_step(generated_image):
         a_G_array=vgg_layer_outputs(generated_image)
         J_style=compute_style_cost(a_S_array,a_G_array)
 
-        J=total_cost(J_content,J_style,alpha=1,beta=50)
+        J=total_cost(J_content,J_style,alpha=10,beta=400)
 
     grad=tape.gradient(J,generated_image)
     optimizer.apply_gradients([(grad,generated_image)])
@@ -146,7 +146,7 @@ print(generated_image.dtype)
 generated_image=tf.Variable(np.expand_dims(generated_image,axis=0))
 # print(generated_image)
 
-epochs = 2501
+epochs = 5001
 for i in range(epochs):
     loss=train_step(generated_image)
     if i%250==0:
