@@ -14,7 +14,7 @@ Python, TensorFlow, CNN, Computer Vision
 
 ## Results
 
-<img src="Utils/forreadme.png" height=400px width=500px>
+<img src="intro/forreadme.png" height=400px width=500px>
 
 ## Key Learnings
 
