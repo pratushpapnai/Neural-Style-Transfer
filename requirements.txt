@@ -1,0 +1,4 @@
+tensorflow=2.10.1
+python=3.10.18
+numpy=1.26.4
+cv2=4.9.0
